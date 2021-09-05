@@ -18,7 +18,7 @@
             "tsConfig": "apps/rxjs7/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/rxjs7/src/favicon.ico", "apps/rxjs7/src/assets"],
-            "styles": ["apps/rxjs7/src/styles.scss"],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/rxjs7/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -119,6 +119,7 @@
     }
   },
   "cli": {
+    "analytics": "4b9e72b5-0569-4d6a-92f4-2ad3c57c9f60",
     "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },

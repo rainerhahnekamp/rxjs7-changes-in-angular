@@ -1,0 +1,9 @@
+<ng-container *ngIf="holiday$ | async as holiday">
+  <div class="box">
+    <img [alt]="holiday.title" [src]="holiday.imageUrl" />
+    <div class="content">
+      <p>{{ holiday.teaser }}</p>
+      <p>{{ holiday.description }}</p>
+    </div>
+  </div>
+</ng-container>

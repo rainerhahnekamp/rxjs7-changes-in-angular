@@ -1,0 +1,16 @@
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel hideToggle *ngFor="let holiday of holidays$ | async">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>arrow_circle_down</mat-icon>
+      </mat-panel-title>
+      <mat-panel-description> {{ holiday.title }}</mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <ng-template matExpansionPanelContent>
+      <app-holiday-detail [holidayId]="holiday.id"></app-holiday-detail>
+    </ng-template>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<p>Total: {{ (holidays$ | async)?.length }}</p>
