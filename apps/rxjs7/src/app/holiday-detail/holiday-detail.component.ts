@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { filter, map, Observable } from 'rxjs';
+import { filter, first, map, Observable } from 'rxjs';
 import { Holiday } from '../holiday';
 import { HolidaysService } from '../holidays.service';
 
