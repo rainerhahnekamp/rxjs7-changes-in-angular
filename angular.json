@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "projects": {
+    "rxjs7": {
+      "projectType": "application",
+      "root": "apps/rxjs7",
+      "sourceRoot": "apps/rxjs7/src",
+      "prefix": "rxjs7",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/rxjs7",
+            "index": "apps/rxjs7/src/index.html",
+            "main": "apps/rxjs7/src/main.ts",
+            "polyfills": "apps/rxjs7/src/polyfills.ts",
+            "tsConfig": "apps/rxjs7/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["apps/rxjs7/src/favicon.ico", "apps/rxjs7/src/assets"],
+            "styles": ["apps/rxjs7/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/rxjs7/src/environments/environment.ts",
+                  "with": "apps/rxjs7/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "rxjs7:build:production"
+            },
+            "development": {
+              "browserTarget": "rxjs7:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rxjs7:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/rxjs7/src/**/*.ts",
+              "apps/rxjs7/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/rxjs7"],
+          "options": {
+            "jestConfig": "apps/rxjs7/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "rxjs7-e2e": {
+      "root": "apps/rxjs7-e2e",
+      "sourceRoot": "apps/rxjs7-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/rxjs7-e2e/cypress.json",
+            "devServerTarget": "rxjs7:serve:development",
+            "tsConfig": "apps/rxjs7-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rxjs7:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/rxjs7-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "rxjs7"
+}
