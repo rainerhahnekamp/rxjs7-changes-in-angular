@@ -15,12 +15,15 @@ export class HolidayDetailComponent implements OnInit {
   constructor(private holidaysService: HolidaysService) {}
 
   ngOnInit() {
-    this.holiday$ = this.holidaysService.holidays$.pipe(
-      map((holidays) =>
-        holidays.find((holiday) => holiday.id === this.holidayId)
-      ),
-      filter((holiday) => !!holiday),
-      map((holiday) => holiday as Holiday)
-    );
+    this.holiday$ = this.holidaysService.holidays$
+      .pipe(
+        map((holidays) =>
+          holidays.find((holiday) => holiday.id === this.holidayId)
+        )
+      )
+      .pipe(
+        filter((holiday) => !!holiday),
+        map((holiday) => holiday as Holiday)
+      );
   }
 }
