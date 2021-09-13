@@ -23,7 +23,8 @@ export class HolidayDetailComponent implements OnInit {
       )
       .pipe(
         filter((holiday) => !!holiday),
-        map((holiday) => holiday as Holiday)
+        map((holiday) => holiday as Holiday),
+        first()
       );
   }
 }
