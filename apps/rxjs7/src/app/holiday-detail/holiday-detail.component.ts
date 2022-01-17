@@ -20,19 +20,10 @@ export class HolidayDetailComponent {
   constructor(private holidaysService: HolidaysService) {}
 
   filterHoliday(source$: Observable<Holiday | undefined>) {
-    return source$.pipe(
-      filter((holiday) => !!holiday),
-      map((holiday) => {
-        console.log(holiday);
-        isHoliday(holiday);
-        return holiday;
-      })
-    );
+    return source$.pipe(filter(isHoliday));
   }
 }
 
-function isHoliday(holiday: Holiday | undefined): asserts holiday is Holiday {
-  if (holiday === undefined) {
-    throw new Error('no valid holiday');
-  }
+function isHoliday(holiday: Holiday | undefined): holiday is Holiday {
+  return holiday !== undefined;
 }

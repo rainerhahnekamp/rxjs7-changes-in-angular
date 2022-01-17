@@ -5,7 +5,7 @@
       "projectType": "application",
       "root": "apps/rxjs7",
       "sourceRoot": "apps/rxjs7/src",
-      "prefix": "rxjs7",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -18,7 +18,10 @@
             "tsConfig": "apps/rxjs7/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["apps/rxjs7/src/favicon.ico", "apps/rxjs7/src/assets"],
-            "styles": ["./node_modules/@angular/material/prebuilt-themes/indigo-pink.css", "apps/rxjs7/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/rxjs7/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
