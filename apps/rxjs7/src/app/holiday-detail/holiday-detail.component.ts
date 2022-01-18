@@ -20,7 +20,7 @@ export class HolidayDetailComponent {
   constructor(private holidaysService: HolidaysService) {}
 
   filterHoliday(source$: Observable<Holiday | undefined>) {
-    return source$.pipe(filter(isHoliday));
+    return source$.pipe(filter(isHoliday), first());
   }
 }
 
